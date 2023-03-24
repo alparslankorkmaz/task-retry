@@ -11,7 +11,9 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const Participant = require("./models/participant");
 
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/registration";
+const dbUrl =
+  "mongodb+srv://korkmazalparslan:JLbxVRHh26B00g9c@cluster0.repok6d.mongodb.net/registration" ||
+  "mongodb://localhost:27017/registration";
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
