@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
-
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const express = require("express");
 const path = require("path");
@@ -11,8 +11,11 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const Participant = require("./models/participant");
 
-const dbUrl = process.env.DB_URL;
-mongoose.connect(dbUrl, { useNewUrlParser: true });
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/registration";
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
 
