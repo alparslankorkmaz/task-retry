@@ -3,12 +3,17 @@
 h1,
 .h1,
 .h2,
-.h5 {
+.h5,
+ul {
   font-family: "Roboto Slab", sans-serif;
 }
 
 p {
   font-family: "Source Sans Pro", sans-serif;
+}
+
+body ul {
+  font-size: 15px;
 }
 
 body .btn-warning {
