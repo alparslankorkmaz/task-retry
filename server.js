@@ -11,7 +11,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const Participant = require("./models/participant");
 
-dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 
 const app = express();
