@@ -87,20 +87,23 @@ app.get("/success", (req, res) => {
 });
 
 app.post("/register", validateReg, async (req, res, next) => {
+  const { firstname, lastname, companyname, email, address, postcode } =
+    req.body;
+
   try {
-    const newPar = new Participant({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      companyname: req.body.companyname,
-      email: req.body.email,
-      address: req.body.address,
-      postcode: req.body.postcode,
+    await Participant.create({
+      firstname,
+      lastname,
+      companyname,
+      email,
+      address,
+      postcode,
     });
-    await newPar.save();
     setTimeout(function () {
       res.redirect("/success");
     }, 2000);
-  } catch {
+  } catch (error) {
+    res.status(400).json({ error: error.message });
     next();
   }
 });
